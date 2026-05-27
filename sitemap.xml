@@ -3,20 +3,84 @@
 <urlset
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
+<!-- HOMEPAGE -->
 
+<url>
 <loc>
 https://shalimoosavi.github.io/syed-ali-hasan-moosavi/
 </loc>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
+</url>
 
-<changefreq>
-weekly
-</changefreq>
+<!-- FOUNDER -->
 
-<priority>
-1.0
-</priority>
+<url>
+<loc>
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/founder/
+</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
 
+<!-- NEXUSRANK AI -->
+
+<url>
+<loc>
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/products/nexusrank-ai.html
+</loc>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+
+<!-- MA HOSPITAL -->
+
+<url>
+<loc>
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/products/ma-hospital.html
+</loc>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+
+<!-- SYJ TOKEN -->
+
+<url>
+<loc>
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/products/syj-token-ecosystem.html
+</loc>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+
+<!-- RESEARCH -->
+
+<url>
+<loc>
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/research/
+</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<!-- INSIGHTS -->
+
+<url>
+<loc>
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/insights/
+</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<!-- CONTACT -->
+
+<url>
+<loc>
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/contact/
+</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 </urlset>

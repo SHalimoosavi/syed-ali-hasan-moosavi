@@ -7,3 +7,20 @@ https://shalimoosavi.github.io/syed-ali-hasan-moosavi/sitemap.xml
 
 Host:
 https://shalimoosavi.github.io
+
+# AI SEARCH OPTIMIZATION
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
