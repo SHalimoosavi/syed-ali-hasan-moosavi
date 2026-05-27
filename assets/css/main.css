@@ -6385,3 +6385,298 @@ h2{
     }
 
 }
+
+/* =========================================================
+   PHASE 14 — AI PREMIUM EXPERIENCE LAYER
+========================================================= */
+
+/* ULTRA SMOOTH RENDERING */
+
+*{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* PREMIUM CURSOR FEEL */
+
+a,
+button,
+.card,
+.dashboard-panel,
+.command-card,
+.product-card{
+
+    cursor: pointer;
+
+}
+
+/* INTELLIGENT BACKGROUND DEPTH */
+
+body::before{
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(0,140,255,0.06),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 80% 40%,
+        rgba(140,0,255,0.05),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 50% 80%,
+        rgba(0,255,200,0.04),
+        transparent 30%
+    );
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+    aiBackgroundFlow 18s ease-in-out infinite;
+
+}
+
+@keyframes aiBackgroundFlow{
+
+    0%{
+        transform: scale(1) rotate(0deg);
+    }
+
+    50%{
+        transform: scale(1.08) rotate(2deg);
+    }
+
+    100%{
+        transform: scale(1) rotate(0deg);
+    }
+
+}
+
+/* GLASSMORPHISM UPGRADE */
+
+.dashboard-panel,
+.command-card,
+.product-card,
+.contact-card,
+.glass-card{
+
+    backdrop-filter: blur(24px);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.02)
+    );
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+}
+
+/* PREMIUM TEXT GRADIENT */
+
+.hero-title,
+.logo,
+.gradient-text{
+
+    background:
+    linear-gradient(
+        90deg,
+        #ffffff,
+        #7dd3fc,
+        #60a5fa,
+        #818cf8
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+/* ADVANCED HERO GLOW */
+
+.hero::after{
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(120,120,255,0.18),
+        transparent 70%
+    );
+
+    top: 10%;
+    right: -120px;
+
+    filter: blur(50px);
+
+    animation:
+    heroPulse 8s ease-in-out infinite;
+
+}
+
+@keyframes heroPulse{
+
+    0%{
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50%{
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+    100%{
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+}
+
+/* PREMIUM NAVBAR */
+
+.navbar{
+
+    backdrop-filter: blur(18px);
+
+    background:
+    linear-gradient(
+        to right,
+        rgba(5,10,30,0.88),
+        rgba(5,10,30,0.55)
+    );
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.06);
+
+}
+
+/* SECTION TITLES */
+
+.section-title{
+
+    position: relative;
+    display: inline-block;
+
+}
+
+.section-title::after{
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -14px;
+
+    width: 80px;
+    height: 4px;
+
+    border-radius: 999px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #38bdf8,
+        #818cf8
+    );
+
+}
+
+/* PREMIUM SCROLLBAR */
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track{
+    background: #050816;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+    linear-gradient(
+        #38bdf8,
+        #818cf8
+    );
+
+    border-radius: 999px;
+
+}
+
+/* MICRO INTERACTIONS */
+
+.dashboard-panel *,
+.command-card *,
+.product-card *{
+
+    transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+
+}
+
+.dashboard-panel:hover h3,
+.command-card:hover h3,
+.product-card:hover h3{
+
+    transform: translateX(6px);
+
+}
+
+/* SOFT IMAGE DEPTH */
+
+img{
+
+    filter:
+    drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+
+}
+
+/* MOBILE AI OPTIMIZATION */
+
+@media(max-width:768px){
+
+    .hero-title{
+
+        font-size: 4rem !important;
+
+    }
+
+    .section-title::after{
+
+        width: 60px;
+
+    }
+
+    .hero::after{
+
+        width: 240px;
+        height: 240px;
+
+        right: -100px;
+
+    }
+
+}
