@@ -1,243 +1,220 @@
 /* ======================================================
-   SYED ALI HASAN MOOSAVI
-   FOUNDER COMMAND CENTER
-   PHASE 8C FINAL JAVASCRIPT
-====================================================== */
-
-/* ======================================================
-   ROLE ROTATOR
-====================================================== */
-
-const roles = [
-  "Founder",
-  "Software Architect",
-  "AI Product Builder",
-  "Entrepreneur",
-  "Technology Innovator",
-  "Business Strategist",
-  "Visionary Technologist"
-];
-
-const typingText =
-document.getElementById(
-"typing-text"
-);
-
-if(typingText){
-
-let roleIndex = 0;
-
-typingText.textContent =
-roles[roleIndex];
-
-setInterval(()=>{
-
-roleIndex++;
-
-if(roleIndex >= roles.length){
-roleIndex = 0;
-}
-
-typingText.style.opacity="0";
-
-setTimeout(()=>{
-
-typingText.textContent =
-roles[roleIndex];
-
-typingText.style.opacity="1";
-
-},300);
-
-},2500);
-
-}
-
-/* ======================================================
    MOBILE MENU
 ====================================================== */
 
 const menuToggle =
-document.getElementById(
-"menuToggle"
-);
+document.getElementById("menuToggle");
 
 const navLinks =
-document.getElementById(
-"navLinks"
-);
+document.getElementById("navLinks");
 
-if(menuToggle && navLinks){
+if(menuToggle){
 
 menuToggle.addEventListener(
 "click",
 ()=>{
 
-navLinks.classList.toggle(
-"show"
-);
-
-}
-);
-
-}
-
-document
-.querySelectorAll(
-"#navLinks a"
-)
-.forEach(link=>{
-
-link.addEventListener(
-"click",
-()=>{
-
-if(navLinks){
-
-navLinks.classList.remove(
-"show"
-);
-
-}
-
-}
-);
+navLinks.classList.toggle("active");
 
 });
 
+}
+
 /* ======================================================
-   NAVBAR EFFECT
+   TYPING EFFECT
 ====================================================== */
 
-const navbar =
-document.querySelector(
-".navbar"
-);
+const typingText =
+document.getElementById("typing-text");
 
-window.addEventListener(
-"scroll",
-()=>{
+const roles = [
 
-if(!navbar) return;
+"Founder & Managing Director",
 
-if(window.scrollY > 50){
+"Software Architect",
 
-navbar.style.background =
-"rgba(5,8,22,.95)";
+"AI Product Builder",
 
-navbar.style.boxShadow =
-"0 10px 40px rgba(0,0,0,.4)";
+"Technology Strategist",
+
+"Enterprise Ecosystem Builder",
+
+"Innovation Leader"
+
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect(){
+
+if(!typingText) return;
+
+const currentRole =
+roles[roleIndex];
+
+if(!deleting){
+
+typingText.textContent =
+currentRole.substring(0,charIndex++);
+
+if(charIndex >
+currentRole.length){
+
+deleting = true;
+
+setTimeout(typeEffect,1500);
+
+return;
+
+}
 
 }else{
 
-navbar.style.background =
-"rgba(5,8,22,.75)";
+typingText.textContent =
+currentRole.substring(0,charIndex--);
 
-navbar.style.boxShadow =
-"none";
+if(charIndex < 0){
+
+deleting = false;
+
+roleIndex =
+(roleIndex + 1)
+% roles.length;
 
 }
 
 }
+
+setTimeout(
+typeEffect,
+deleting ? 45 : 90
 );
+
+}
+
+typeEffect();
 
 /* ======================================================
-   SMOOTH SCROLL
+   PARTICLE SYSTEM
 ====================================================== */
 
-document
-.querySelectorAll(
-'a[href^="#"]'
-)
-.forEach(anchor=>{
+const canvas =
+document.getElementById("particles");
 
-anchor.addEventListener(
-"click",
-function(e){
+if(canvas){
 
-e.preventDefault();
+const ctx =
+canvas.getContext("2d");
 
-const target =
-document.querySelector(
-this.getAttribute(
-"href"
-)
-);
+canvas.width =
+window.innerWidth;
 
-if(target){
+canvas.height =
+window.innerHeight;
 
-target.scrollIntoView({
+let particles = [];
 
-behavior:"smooth",
-block:"start"
+for(let i=0;i<90;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+dx:(Math.random()-.5)*0.5,
+dy:(Math.random()-.5)*0.5
 
 });
 
 }
 
-}
+function animateParticles(){
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
 );
 
-});
+ctx.fillStyle =
+"rgba(91,140,255,.7)";
 
-/* ======================================================
-   ACTIVE SECTION NAVIGATION
-====================================================== */
+particles.forEach(p=>{
 
-const sections =
-document.querySelectorAll(
-"section[id]"
+ctx.beginPath();
+
+ctx.arc(
+p.x,
+p.y,
+p.r,
+0,
+Math.PI*2
 );
 
-window.addEventListener(
-"scroll",
-()=>{
+ctx.fill();
 
-const scrollY =
-window.pageYOffset;
-
-sections.forEach(section=>{
-
-const sectionHeight =
-section.offsetHeight;
-
-const sectionTop =
-section.offsetTop - 150;
-
-const sectionId =
-section.getAttribute("id");
-
-const navItem =
-document.querySelector(
-'.nav-links a[href="#'+
-sectionId +
-'"]'
-);
+p.x += p.dx;
+p.y += p.dy;
 
 if(
-scrollY > sectionTop &&
-scrollY <= sectionTop + sectionHeight
-){
+p.x < 0 ||
+p.x > canvas.width
+) p.dx *= -1;
 
-if(navItem){
-
-navItem.style.color =
-"#00e0ff";
-
-}
-
-}else{
-
-if(navItem){
-
-navItem.style.color =
-"";
-
-}
-
-}
+if(
+p.y < 0 ||
+p.y > canvas.height
+) p.dy *= -1;
 
 });
+
+requestAnimationFrame(
+animateParticles
+);
+
+}
+
+animateParticles();
+
+window.addEventListener(
+"resize",
+()=>{
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+});
+
+}
+
+/* ======================================================
+   CURSOR GLOW
+====================================================== */
+
+const glow =
+document.createElement("div");
+
+glow.classList.add(
+"cursor-glow"
+);
+
+document.body.appendChild(glow);
+
+document.addEventListener(
+"mousemove",
+e=>{
+
+glow.style.left =
+e.clientX + "px";
+
+glow.style.top =
+e.clientY + "px";
 
 }
 );
@@ -246,21 +223,31 @@ navItem.style.color =
    REVEAL ON SCROLL
 ====================================================== */
 
-const revealItems =
+const revealElements =
 document.querySelectorAll(
-".card,.section-header"
+
+".dashboard-panel,\
+.command-card,\
+.ecosystem-node,\
+.intelligence-block,\
+.timeline-card,\
+.roadmap-node,\
+.architecture-item,\
+.infrastructure-box"
+
 );
 
-const revealObserver =
+const observer =
 new IntersectionObserver(
 
-(entries)=>{
+entries=>{
 
 entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
 entry.target.classList.add(
+"reveal",
 "active"
 );
 
@@ -276,336 +263,92 @@ threshold:0.1
 
 );
 
-revealItems.forEach(item=>{
+revealElements.forEach(el=>{
 
-item.classList.add(
-"reveal"
-);
+el.classList.add("reveal");
 
-revealObserver.observe(item);
+observer.observe(el);
 
 });
 
 /* ======================================================
-   COUNTER ANIMATION
+   PARALLAX MOTION
 ====================================================== */
 
-const counters =
+document.addEventListener(
+"mousemove",
+e=>{
+
+const x =
+(e.clientX / window.innerWidth - .5);
+
+const y =
+(e.clientY / window.innerHeight - .5);
+
 document.querySelectorAll(
-".counter"
-);
+".orb"
+).forEach((orb,index)=>{
 
-function animateCounter(counter){
+const speed =
+(index + 1) * 30;
 
-const target =
-parseInt(
-counter.dataset.target
-);
+orb.style.transform =
 
-let count = 0;
-
-const increment =
-target / 120;
-
-function update(){
-
-count += increment;
-
-if(count < target){
-
-counter.textContent =
-Math.floor(count);
-
-requestAnimationFrame(
-update
-);
-
-}else{
-
-counter.textContent =
-target;
-
-}
-
-}
-
-update();
-
-}
-
-const counterObserver =
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-animateCounter(
-entry.target
-);
-
-counterObserver.unobserve(
-entry.target
-);
-
-}
+`translate(
+${x * speed}px,
+${y * speed}px
+)`;
 
 });
 
-},
-
-{
-threshold:0.3
 }
-
 );
 
-counters.forEach(counter=>{
+/* ======================================================
+   FLOATING EFFECTS
+====================================================== */
 
-counterObserver.observe(
-counter
+document.querySelectorAll(
+".metric-widget,\
+.core-node,\
+.dashboard-panel"
+).forEach(el=>{
+
+el.classList.add(
+"float-element"
 );
 
 });
 
 /* ======================================================
-   PARTICLE ENGINE
+   PREMIUM HOVER PHYSICS
 ====================================================== */
 
-const canvas =
-document.getElementById(
-"particles"
+document.querySelectorAll(
+".dashboard-panel,\
+.command-card,\
+.architecture-item,\
+.ecosystem-node"
+).forEach(card=>{
+
+card.classList.add(
+"physics-hover"
 );
-
-if(canvas){
-
-const ctx =
-canvas.getContext("2d");
-
-let particles = [];
-
-function resizeCanvas(){
-
-canvas.width =
-window.innerWidth;
-
-canvas.height =
-window.innerHeight;
-
-}
-
-resizeCanvas();
-
-window.addEventListener(
-"resize",
-resizeCanvas
-);
-
-class Particle{
-
-constructor(){
-
-this.x =
-Math.random() *
-canvas.width;
-
-this.y =
-Math.random() *
-canvas.height;
-
-this.radius =
-Math.random() * 2 + 1;
-
-this.speedX =
-(Math.random()-0.5)*0.4;
-
-this.speedY =
-(Math.random()-0.5)*0.4;
-
-}
-
-update(){
-
-this.x += this.speedX;
-this.y += this.speedY;
-
-if(this.x < 0)
-this.x = canvas.width;
-
-if(this.x > canvas.width)
-this.x = 0;
-
-if(this.y < 0)
-this.y = canvas.height;
-
-if(this.y > canvas.height)
-this.y = 0;
-
-}
-
-draw(){
-
-ctx.beginPath();
-
-ctx.arc(
-this.x,
-this.y,
-this.radius,
-0,
-Math.PI*2
-);
-
-ctx.fillStyle =
-"rgba(91,140,255,.45)";
-
-ctx.fill();
-
-}
-
-}
-
-function initParticles(){
-
-particles = [];
-
-for(let i=0;i<150;i++){
-
-particles.push(
-new Particle()
-);
-
-}
-
-}
-
-function connectParticles(){
-
-for(let a=0;a<particles.length;a++){
-
-for(let b=a;b<particles.length;b++){
-
-const dx =
-particles[a].x -
-particles[b].x;
-
-const dy =
-particles[a].y -
-particles[b].y;
-
-const distance =
-dx*dx + dy*dy;
-
-if(distance < 12000){
-
-ctx.beginPath();
-
-ctx.strokeStyle =
-"rgba(91,140,255,.08)";
-
-ctx.lineWidth = 1;
-
-ctx.moveTo(
-particles[a].x,
-particles[a].y
-);
-
-ctx.lineTo(
-particles[b].x,
-particles[b].y
-);
-
-ctx.stroke();
-
-}
-
-}
-
-}
-
-}
-
-function animateParticles(){
-
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-particles.forEach(p=>{
-
-p.update();
-p.draw();
 
 });
 
-connectParticles();
-
-requestAnimationFrame(
-animateParticles
-);
-
-}
-
-initParticles();
-animateParticles();
-
-}
-
 /* ======================================================
-   PARALLAX HERO
+   DYNAMIC YEAR
 ====================================================== */
 
-const hero =
-document.querySelector(
-".hero"
-);
+const year =
+new Date().getFullYear();
 
-window.addEventListener(
-"scroll",
-()=>{
+document.querySelectorAll(
+"footer p:first-child"
+).forEach(el=>{
 
-if(!hero) return;
+el.innerHTML =
+`© ${year} Syed Ali Hasan Moosavi`;
 
-const offset =
-window.pageYOffset;
-
-hero.style.transform =
-"translateY(" +
-(offset * 0.15) +
-"px)";
-
-}
-);
-
-/* ======================================================
-   PERFORMANCE
-====================================================== */
-
-window.addEventListener(
-"load",
-()=>{
-
-document.body.classList.add(
-"loaded"
-);
-
-}
-);
-
-/* ======================================================
-   CONSOLE SIGNATURE
-====================================================== */
-
-console.log(
-"%cSYED ALI HASAN MOOSAVI",
-"color:#5b8cff;font-size:16px;font-weight:bold;"
-);
-
-console.log(
-"%cFounder Command Center Loaded",
-"color:#00e0ff;font-size:12px;"
-);
+});
