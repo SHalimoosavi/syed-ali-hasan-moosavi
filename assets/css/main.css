@@ -3127,3 +3127,423 @@ contain:layout style paint;
 min-height:220px;
 
 }
+
+/* =======================================================
+   PHASE 11.1 CINEMATIC HERO SYSTEM
+======================================================= */
+
+.hero{
+
+position:relative;
+
+overflow:hidden;
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+background:
+radial-gradient(
+circle at top right,
+rgba(91,140,255,.18),
+transparent 30%
+),
+
+radial-gradient(
+circle at bottom left,
+rgba(0,224,255,.12),
+transparent 35%
+),
+
+linear-gradient(
+180deg,
+#020617 0%,
+#050816 60%,
+#071021 100%
+);
+
+}
+
+/* =======================================================
+   HERO GRID
+======================================================= */
+
+.hero-grid{
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+linear-gradient(
+rgba(255,255,255,.03) 1px,
+transparent 1px
+),
+
+linear-gradient(
+90deg,
+rgba(255,255,255,.03) 1px,
+transparent 1px
+);
+
+background-size:80px 80px;
+
+mask-image:
+radial-gradient(
+circle at center,
+black,
+transparent 90%
+);
+
+opacity:.3;
+
+animation:
+gridMove 18s linear infinite;
+
+}
+
+@keyframes gridMove{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(80px);
+}
+
+}
+
+/* =======================================================
+   MAIN AI ORB
+======================================================= */
+
+.ai-orb{
+
+position:absolute;
+
+top:50%;
+right:8%;
+
+width:520px;
+height:520px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+circle at 30% 30%,
+rgba(255,255,255,.35),
+transparent 20%
+),
+
+radial-gradient(
+circle,
+rgba(91,140,255,.30),
+rgba(0,224,255,.12),
+transparent 70%
+);
+
+filter:blur(2px);
+
+animation:
+orbFloat 10s ease-in-out infinite;
+
+z-index:0;
+
+}
+
+.ai-orb::before{
+
+content:"";
+
+position:absolute;
+
+inset:-40px;
+
+border-radius:50%;
+
+border:
+1px solid rgba(91,140,255,.18);
+
+animation:
+rotateRing 18s linear infinite;
+
+}
+
+.ai-orb::after{
+
+content:"";
+
+position:absolute;
+
+inset:-90px;
+
+border-radius:50%;
+
+border:
+1px dashed rgba(0,224,255,.15);
+
+animation:
+rotateRingReverse 24s linear infinite;
+
+}
+
+@keyframes orbFloat{
+
+0%{
+transform:
+translateY(0px)
+translateX(0px);
+}
+
+50%{
+transform:
+translateY(-30px)
+translateX(20px);
+}
+
+100%{
+transform:
+translateY(0px)
+translateX(0px);
+}
+
+}
+
+@keyframes rotateRing{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+@keyframes rotateRingReverse{
+
+0%{
+transform:rotate(360deg);
+}
+
+100%{
+transform:rotate(0deg);
+}
+
+}
+
+/* =======================================================
+   FLOATING LIGHTS
+======================================================= */
+
+.light-particle{
+
+position:absolute;
+
+border-radius:50%;
+
+background:
+rgba(91,140,255,.7);
+
+box-shadow:
+0 0 25px rgba(91,140,255,.7);
+
+animation:
+particleFloat linear infinite;
+
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:
+translateY(0)
+translateX(0);
+
+opacity:0;
+
+}
+
+20%{
+opacity:1;
+}
+
+80%{
+opacity:1;
+}
+
+100%{
+
+transform:
+translateY(-120px)
+translateX(40px);
+
+opacity:0;
+
+}
+
+}
+
+/* =======================================================
+   HERO CONTENT
+======================================================= */
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+max-width:760px;
+
+}
+
+/* =======================================================
+   HOLOGRAPHIC EFFECT
+======================================================= */
+
+.holographic{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.holographic::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.12),
+transparent
+);
+
+transform:
+translateX(-100%);
+
+animation:
+holographicMove 6s linear infinite;
+
+}
+
+@keyframes holographicMove{
+
+100%{
+transform:
+translateX(100%);
+}
+
+}
+
+/* =======================================================
+   BUTTON GLOW
+======================================================= */
+
+.btn-primary{
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow:
+0 0 40px rgba(91,140,255,.35);
+
+}
+
+.btn-primary:hover{
+
+box-shadow:
+0 0 70px rgba(91,140,255,.55);
+
+transform:
+translateY(-4px);
+
+}
+
+/* =======================================================
+   HERO TYPOGRAPHY
+======================================================= */
+
+.hero h1{
+
+font-size:clamp(4rem,10vw,8rem);
+
+line-height:.95;
+
+letter-spacing:-4px;
+
+margin-bottom:25px;
+
+font-weight:800;
+
+}
+
+.hero p{
+
+font-size:1.25rem;
+
+line-height:1.9;
+
+max-width:720px;
+
+}
+
+/* =======================================================
+   MOBILE OPTIMIZATION
+======================================================= */
+
+@media(max-width:768px){
+
+.ai-orb{
+
+width:280px;
+height:280px;
+
+right:-20%;
+
+top:20%;
+
+opacity:.6;
+
+}
+
+.hero-grid{
+
+background-size:40px 40px;
+
+}
+
+.hero h1{
+
+font-size:4rem;
+
+letter-spacing:-2px;
+
+}
+
+.hero p{
+
+font-size:1rem;
+
+line-height:1.8;
+
+}
+
+}
+
