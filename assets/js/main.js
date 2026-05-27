@@ -1,9 +1,9 @@
-// =========================================
+// =====================================
 // Syed Ali Hasan Moosavi Portfolio
-// Phase 6 Main JavaScript
-// =========================================
+// Phase 7 Premium JS
+// =====================================
 
-// Animated Founder Roles
+// ---------- ROLE ANIMATION ----------
 
 const roles = [
   "Founder",
@@ -15,213 +15,84 @@ const roles = [
   "Visionary Technologist"
 ];
 
-const typingText =
+const roleElement =
 document.getElementById("typing-text");
 
-if (typingText) {
+if(roleElement){
 
-  let current = 0;
+let roleIndex = 0;
 
-  typingText.textContent =
-  roles[current];
+roleElement.textContent =
+roles[roleIndex];
 
-  setInterval(() => {
+setInterval(()=>{
 
-    current++;
+roleIndex++;
 
-    if(current >= roles.length){
-      current = 0;
-    }
+if(roleIndex >= roles.length){
+roleIndex = 0;
+}
 
-    typingText.style.opacity = "0";
+roleElement.style.opacity = "0";
 
-    setTimeout(() => {
+setTimeout(()=>{
 
-      typingText.textContent =
-      roles[current];
+roleElement.textContent =
+roles[roleIndex];
 
-      typingText.style.opacity = "1";
+roleElement.style.opacity = "1";
 
-    },300);
+},300);
 
-  },2500);
+},2500);
 
 }
 
-// =========================================
-// Mobile Menu
-// =========================================
+// ---------- MOBILE MENU ----------
 
 const menuToggle =
-document.getElementById("menuToggle");
+document.getElementById(
+"menuToggle"
+);
 
 const navLinks =
-document.getElementById("navLinks");
+document.getElementById(
+"navLinks"
+);
 
 if(menuToggle && navLinks){
 
-  menuToggle.addEventListener(
-    "click",
-    () => {
+menuToggle.addEventListener(
+"click",
+()=>{
 
-      navLinks.classList.toggle(
-        "show"
-      );
-
-    }
-  );
+navLinks.classList.toggle(
+"show"
+);
 
 }
+);
 
-// Close Menu After Click
+}
 
 document
 .querySelectorAll("#navLinks a")
-.forEach(link => {
+.forEach(link=>{
 
-  link.addEventListener(
-    "click",
-    () => {
+link.addEventListener(
+"click",
+()=>{
 
-      navLinks.classList.remove(
-        "show"
-      );
-
-    }
-  );
-
-});
-
-// =========================================
-// Animated Counters
-// =========================================
-
-const counters =
-document.querySelectorAll(".counter");
-
-function runCounter(counter){
-
-  const target =
-  Number(
-    counter.dataset.target
-  );
-
-  let value = 0;
-
-  const increment =
-  target / 100;
-
-  function update(){
-
-    value += increment;
-
-    if(value < target){
-
-      counter.innerText =
-      Math.floor(value);
-
-      requestAnimationFrame(update);
-
-    }else{
-
-      counter.innerText =
-      target;
-
-    }
-
-  }
-
-  update();
-
-}
-
-const counterObserver =
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-runCounter(entry.target);
-
-counterObserver.unobserve(
-entry.target
+navLinks.classList.remove(
+"show"
 );
 
 }
-
-});
-
-},
-
-{
-threshold:0.3
-}
-
-);
-
-counters.forEach(counter=>{
-
-counterObserver.observe(
-counter
 );
 
 });
 
-// =========================================
-// Scroll Reveal Animation
-// =========================================
-
-const revealItems =
-document.querySelectorAll(
-".card,.section-header"
-);
-
-const revealObserver =
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-
-entry.target.style.transform=
-"translateY(0)";
-
-}
-
-});
-
-},
-
-{
-threshold:.1
-}
-
-);
-
-revealItems.forEach(item=>{
-
-item.style.opacity="0";
-
-item.style.transform=
-"translateY(40px)";
-
-item.style.transition=
-"all .8s ease";
-
-revealObserver.observe(item);
-
-});
-
-// =========================================
-// Navbar Scroll Effect
-// =========================================
+// ---------- NAVBAR EFFECT ----------
 
 const navbar =
 document.querySelector(
@@ -236,18 +107,18 @@ if(!navbar) return;
 
 if(window.scrollY > 50){
 
-navbar.style.background=
+navbar.style.background =
 "rgba(5,8,22,.95)";
 
-navbar.style.boxShadow=
-"0 10px 40px rgba(0,0,0,.4)";
+navbar.style.boxShadow =
+"0 10px 30px rgba(0,0,0,.4)";
 
 }else{
 
-navbar.style.background=
+navbar.style.background =
 "rgba(5,8,22,.75)";
 
-navbar.style.boxShadow=
+navbar.style.boxShadow =
 "none";
 
 }
@@ -255,12 +126,12 @@ navbar.style.boxShadow=
 }
 );
 
-// =========================================
-// Smooth Anchor Scrolling
-// =========================================
+// ---------- SMOOTH SCROLL ----------
 
 document
-.querySelectorAll('a[href^="#"]')
+.querySelectorAll(
+'a[href^="#"]'
+)
 .forEach(anchor=>{
 
 anchor.addEventListener(
@@ -290,9 +161,54 @@ block:"start"
 
 });
 
-// =========================================
-// Particle Background Engine
-// =========================================
+// ---------- REVEAL ANIMATION ----------
+
+const revealItems =
+document.querySelectorAll(
+".card,.section-header"
+);
+
+const revealObserver =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform=
+"translateY(0)";
+
+}
+
+});
+
+},
+
+{
+threshold:0.1
+}
+
+);
+
+revealItems.forEach(item=>{
+
+item.style.opacity="0";
+
+item.style.transform=
+"translateY(40px)";
+
+item.style.transition=
+"all .8s ease";
+
+revealObserver.observe(item);
+
+});
+
+// ---------- PARTICLE SYSTEM ----------
 
 const canvas =
 document.getElementById(
@@ -339,10 +255,10 @@ this.radius =
 Math.random() * 2 + 1;
 
 this.speedX =
-(Math.random() - 0.5) * 0.5;
+(Math.random() - 0.5) * 0.4;
 
 this.speedY =
-(Math.random() - 0.5) * 0.5;
+(Math.random() - 0.5) * 0.4;
 
 }
 
@@ -374,11 +290,11 @@ this.x,
 this.y,
 this.radius,
 0,
-Math.PI * 2
+Math.PI*2
 );
 
 ctx.fillStyle =
-"rgba(91,140,255,.4)";
+"rgba(91,140,255,.5)";
 
 ctx.fill();
 
@@ -390,7 +306,7 @@ function initParticles(){
 
 particles = [];
 
-for(let i=0;i<120;i++){
+for(let i=0;i<140;i++){
 
 particles.push(
 new Particle()
@@ -415,7 +331,7 @@ particles[a].y -
 particles[b].y;
 
 const distance =
-dx * dx + dy * dy;
+dx*dx + dy*dy;
 
 if(distance < 12000){
 
@@ -475,11 +391,91 @@ animateParticles();
 
 }
 
-// =========================================
-// Console Signature
-// =========================================
+// ---------- COUNTER ANIMATION ----------
+
+const counters =
+document.querySelectorAll(
+".counter"
+);
+
+function animateCounter(counter){
+
+const target =
+parseInt(
+counter.dataset.target
+);
+
+let value = 0;
+
+const increment =
+target / 120;
+
+function update(){
+
+value += increment;
+
+if(value < target){
+
+counter.textContent =
+Math.floor(value);
+
+requestAnimationFrame(
+update
+);
+
+}else{
+
+counter.textContent =
+target;
+
+}
+
+}
+
+update();
+
+}
+
+const counterObserver =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+animateCounter(
+entry.target
+);
+
+counterObserver.unobserve(
+entry.target
+);
+
+}
+
+});
+
+},
+
+{
+threshold:0.3
+}
+
+);
+
+counters.forEach(counter=>{
+
+counterObserver.observe(
+counter
+);
+
+});
+
+// ---------- SIGNATURE ----------
 
 console.log(
-"%cSyed Ali Hasan Moosavi Portfolio Loaded",
+"%cPortfolio Loaded Successfully",
 "color:#5b8cff;font-size:14px;font-weight:bold;"
 );
