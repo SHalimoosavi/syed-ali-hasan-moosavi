@@ -382,3 +382,80 @@ el.innerHTML =
 `© ${year} Syed Ali Hasan Moosavi`;
 
 });
+
+/* =======================================================
+   PHASE 11.3 GLASSMORPHISM AUTO ENGINE
+======================================================= */
+
+document.querySelectorAll(
+
+".dashboard-panel,\
+.command-card,\
+.architecture-item,\
+.ecosystem-node,\
+.timeline-card,\
+.roadmap-node,\
+.infrastructure-box,\
+.metric-widget,\
+.intelligence-block"
+
+).forEach(card=>{
+
+card.classList.add(
+"glass-card",
+"glass-border",
+"glass-float"
+);
+
+const depth =
+document.createElement("div");
+
+depth.classList.add(
+"depth-layer"
+);
+
+card.appendChild(depth);
+
+/* =========================================
+   3D INTERACTION
+========================================= */
+
+card.addEventListener(
+"mousemove",
+e=>{
+
+const rect =
+card.getBoundingClientRect();
+
+const x =
+e.clientX - rect.left;
+
+const y =
+e.clientY - rect.top;
+
+const rotateY =
+((x / rect.width) - 0.5) * 10;
+
+const rotateX =
+((y / rect.height) - 0.5) * -10;
+
+card.style.transform =
+
+`perspective(1000px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+translateY(-10px)`;
+
+}
+);
+
+card.addEventListener(
+"mouseleave",
+()=>{
+
+card.style.transform = "";
+
+}
+);
+
+});

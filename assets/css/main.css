@@ -3950,3 +3950,365 @@ height:10px;
 }
 
 }
+
+/* =======================================================
+   PHASE 11.3 ADVANCED GLASSMORPHISM ENGINE
+======================================================= */
+
+/* =======================================================
+   LIQUID GLASS SYSTEM
+======================================================= */
+
+.glass-card{
+
+position:relative;
+
+overflow:hidden;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.03)
+);
+
+backdrop-filter:
+blur(30px);
+
+-webkit-backdrop-filter:
+blur(30px);
+
+border:
+1px solid rgba(255,255,255,.10);
+
+box-shadow:
+
+0 10px 40px rgba(0,0,0,.25),
+
+inset 0 1px 1px rgba(255,255,255,.08),
+
+0 0 60px rgba(91,140,255,.05);
+
+transition:
+all .5s cubic-bezier(.17,.89,.32,1.28);
+
+transform-style:preserve-3d;
+
+}
+
+/* =======================================================
+   TOP LIGHT REFLECTION
+======================================================= */
+
+.glass-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-150%;
+
+width:120%;
+height:100%;
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.12),
+transparent
+);
+
+transform:
+skewX(-20deg);
+
+transition:
+all 1.2s ease;
+
+pointer-events:none;
+
+}
+
+/* =======================================================
+   INNER GLOW
+======================================================= */
+
+.glass-card::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+radial-gradient(
+circle at top left,
+rgba(91,140,255,.15),
+transparent 40%
+);
+
+opacity:0;
+
+transition:
+opacity .5s ease;
+
+pointer-events:none;
+
+}
+
+/* =======================================================
+   HOVER STATE
+======================================================= */
+
+.glass-card:hover{
+
+transform:
+
+translateY(-12px)
+
+rotateX(3deg)
+
+rotateY(-3deg)
+
+scale(1.01);
+
+border-color:
+rgba(91,140,255,.25);
+
+box-shadow:
+
+0 40px 120px rgba(0,0,0,.45),
+
+0 0 80px rgba(91,140,255,.15),
+
+inset 0 1px 1px rgba(255,255,255,.15);
+
+}
+
+.glass-card:hover::before{
+
+left:150%;
+
+}
+
+.glass-card:hover::after{
+
+opacity:1;
+
+}
+
+/* =======================================================
+   HOLOGRAPHIC BORDER
+======================================================= */
+
+.glass-border{
+
+position:relative;
+
+}
+
+.glass-border::before{
+
+content:"";
+
+position:absolute;
+
+inset:-1px;
+
+border-radius:inherit;
+
+padding:1px;
+
+background:
+linear-gradient(
+130deg,
+rgba(91,140,255,.4),
+rgba(0,224,255,.15),
+rgba(91,140,255,.4)
+);
+
+-webkit-mask:
+
+linear-gradient(#fff 0 0)
+content-box,
+
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+
+mask-composite:exclude;
+
+pointer-events:none;
+
+opacity:.6;
+
+}
+
+/* =======================================================
+   DEPTH LAYERS
+======================================================= */
+
+.depth-layer{
+
+position:absolute;
+
+inset:0;
+
+background:
+radial-gradient(
+circle at 20% 20%,
+rgba(255,255,255,.05),
+transparent 30%
+);
+
+opacity:.8;
+
+pointer-events:none;
+
+}
+
+/* =======================================================
+   PREMIUM CARD TITLES
+======================================================= */
+
+.glass-card h3{
+
+position:relative;
+
+font-size:2rem;
+
+margin-bottom:18px;
+
+letter-spacing:-1px;
+
+}
+
+/* =======================================================
+   SUBTLE FLOATING
+======================================================= */
+
+.glass-float{
+
+animation:
+glassFloat 8s ease-in-out infinite;
+
+}
+
+@keyframes glassFloat{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* =======================================================
+   GLASS NAVBAR
+======================================================= */
+
+header{
+
+backdrop-filter:
+blur(20px);
+
+-webkit-backdrop-filter:
+blur(20px);
+
+background:
+rgba(2,6,23,.55);
+
+border-bottom:
+1px solid rgba(255,255,255,.06);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.25);
+
+}
+
+/* =======================================================
+   PREMIUM BUTTONS
+======================================================= */
+
+.btn{
+
+backdrop-filter:
+blur(12px);
+
+-webkit-backdrop-filter:
+blur(12px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.20);
+
+}
+
+.btn:hover{
+
+transform:
+translateY(-4px)
+scale(1.02);
+
+}
+
+/* =======================================================
+   GLASS SECTION PANELS
+======================================================= */
+
+.section-panel{
+
+position:relative;
+
+padding:40px;
+
+border-radius:36px;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.04),
+rgba(255,255,255,.02)
+);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+backdrop-filter:
+blur(24px);
+
+overflow:hidden;
+
+}
+
+/* =======================================================
+   MOBILE OPTIMIZATION
+======================================================= */
+
+@media(max-width:768px){
+
+.glass-card:hover{
+
+transform:
+translateY(-6px);
+
+}
+
+.glass-card h3{
+
+font-size:1.5rem;
+
+}
+
+}
