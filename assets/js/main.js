@@ -742,3 +742,46 @@ layer.style.transform =
 });
 
 });
+
+/* =======================================================
+   PHASE 11.7 DYNAMIC LIGHT ENGINE
+======================================================= */
+
+const ambientLights =
+document.querySelectorAll(
+".ambient-light"
+);
+
+document.addEventListener(
+"mousemove",
+e=>{
+
+const x =
+e.clientX / window.innerWidth;
+
+const y =
+e.clientY / window.innerHeight;
+
+ambientLights.forEach(
+(light,index)=>{
+
+const speed =
+(index + 1) * 20;
+
+const moveX =
+(x - 0.5) * speed;
+
+const moveY =
+(y - 0.5) * speed;
+
+light.style.transform =
+
+`translate(
+${moveX}px,
+${moveY}px
+)`;
+
+}
+);
+
+});
