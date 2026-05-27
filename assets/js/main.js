@@ -116,7 +116,12 @@ window.innerHeight;
 
 let particles = [];
 
-for(let i=0;i<90;i++){
+const particleCount =
+window.innerWidth < 768
+? 35
+: 70;
+
+for(let i=0;i<particleCount;i++){
 
 particles.push({
 
@@ -206,15 +211,27 @@ glow.classList.add(
 
 document.body.appendChild(glow);
 
+let ticking = false;
+
 document.addEventListener(
 "mousemove",
 e=>{
+
+if(ticking) return;
+
+window.requestAnimationFrame(()=>{
+
+ticking = false;
 
 glow.style.left =
 e.clientX + "px";
 
 glow.style.top =
 e.clientY + "px";
+
+});
+
+ticking = true;
 
 }
 );
@@ -258,7 +275,8 @@ entry.target.classList.add(
 },
 
 {
-threshold:0.1
+threshold:0.05,
+rootMargin:"0px 0px -50px 0px"
 }
 
 );
@@ -275,9 +293,17 @@ observer.observe(el);
    PARALLAX MOTION
 ====================================================== */
 
+let ticking = false;
+
 document.addEventListener(
 "mousemove",
 e=>{
+
+if(ticking) return;
+
+window.requestAnimationFrame(()=>{
+
+ticking = false;
 
 const x =
 (e.clientX / window.innerWidth - .5);
@@ -300,6 +326,10 @@ ${y * speed}px
 )`;
 
 });
+
+});
+
+ticking = true;
 
 }
 );

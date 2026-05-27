@@ -3027,3 +3027,103 @@ transform:none;
 }
 
 }
+
+/* =======================================================
+   PHASE 10.9 LIGHTHOUSE OPTIMIZATION
+======================================================= */
+
+/* GPU ACCELERATION */
+
+.dashboard-panel,
+.command-card,
+.ecosystem-node,
+.architecture-item,
+.infrastructure-box,
+.timeline-card,
+.roadmap-node,
+.metric-widget,
+.core-node{
+
+will-change:
+transform,
+opacity;
+
+transform:
+translateZ(0);
+
+backface-visibility:hidden;
+
+perspective:1000px;
+
+}
+
+/* IMAGE OPTIMIZATION */
+
+img{
+
+max-width:100%;
+
+height:auto;
+
+display:block;
+
+}
+
+/* ACCESSIBILITY */
+
+:focus-visible{
+
+outline:
+2px solid #5b8cff;
+
+outline-offset:4px;
+
+border-radius:8px;
+
+}
+
+/* MOTION ACCESSIBILITY */
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+
+animation:none !important;
+
+transition:none !important;
+
+scroll-behavior:auto !important;
+
+}
+
+}
+
+/* TEXT RENDERING */
+
+body{
+
+text-rendering:optimizeLegibility;
+
+-webkit-font-smoothing:antialiased;
+
+-moz-osx-font-smoothing:grayscale;
+
+}
+
+/* PERFORMANCE */
+
+canvas{
+
+contain:layout style paint;
+
+}
+
+/* REDUCE LAYOUT SHIFT */
+
+.metric-widget,
+.dashboard-panel,
+.command-card{
+
+min-height:220px;
+
+}
