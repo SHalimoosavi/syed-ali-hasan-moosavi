@@ -1,19 +1,67 @@
 @media(max-width:768px){
 
+.header{
+    padding:20px;
+}
+
+.logo{
+    font-size:22px;
+    letter-spacing:4px;
+}
+
+.menu-btn{
+    width:62px;
+    height:62px;
+    flex-shrink:0;
+}
+
+.hero{
+    padding:
+    180px
+    24px
+    80px;
+}
+
+.hero-badge{
+    font-size:12px;
+    padding:14px 22px;
+    line-height:1.6;
+}
+
 .hero h1{
-    font-size:64px;
+    font-size:58px;
+    line-height:0.95;
+    word-break:break-word;
 }
 
 .hero h2{
-    font-size:22px;
+    font-size:20px;
+    line-height:1.5;
+    word-break:break-word;
 }
 
 .hero p{
     font-size:18px;
+    line-height:1.8;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+.primary-btn,
+.secondary-btn{
+    width:100%;
+    text-align:center;
 }
 
 .section-title{
     font-size:42px;
+    line-height:1.2;
+}
+
+.glass-card{
+    padding:32px;
 }
 
 .glass-card h3{
@@ -23,40 +71,60 @@
 .glass-card p,
 .glass-card li{
     font-size:18px;
+    line-height:1.8;
 }
 
-.logo{
-    font-size:24px;
-    letter-spacing:4px;
+.stat-card{
+    padding:40px 30px;
 }
 
-.menu-btn{
-    width:64px;
-    height:64px;
+.stat-card h3{
+    font-size:48px;
+}
+
+.stat-card p{
+    font-size:20px;
+}
+
+.mobile-menu{
+    width:85%;
 }
 
 }
 
 @media(max-width:480px){
 
+.logo{
+    font-size:18px;
+    letter-spacing:3px;
+}
+
 .hero{
-    padding-top:160px;
+    padding-top:170px;
 }
 
 .hero h1{
-    font-size:52px;
+    font-size:48px;
 }
 
 .hero h2{
-    font-size:20px;
+    font-size:18px;
+}
+
+.hero p{
+    font-size:17px;
 }
 
 .section-title{
     font-size:36px;
 }
 
-.stat-card h3{
-    font-size:48px;
+.glass-card h3{
+    font-size:26px;
+}
+
+.glass-card{
+    padding:28px;
 }
 
 }
