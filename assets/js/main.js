@@ -1,8 +1,33 @@
+window.addEventListener("load", () => {
+
+const loader =
+document.querySelector(".loader");
+
+if(loader){
+
+setTimeout(() => {
+
+loader.style.opacity = "0";
+
+loader.style.visibility = "hidden";
+
+document.body.style.overflow = "auto";
+
+}, 1200);
+
+}
+
+});
+
+
+
 const menuBtn =
 document.querySelector(".menu-btn");
 
 const mobileMenu =
 document.querySelector(".mobile-menu");
+
+if(menuBtn && mobileMenu){
 
 menuBtn.addEventListener(
 "click",
@@ -11,6 +36,9 @@ menuBtn.addEventListener(
 mobileMenu.classList.toggle("active");
 
 });
+}
+
+
 
 document.querySelectorAll(
 ".mobile-menu a"
@@ -20,14 +48,20 @@ link.addEventListener(
 "click",
 () => {
 
-mobileMenu.classList.remove("active");
+mobileMenu.classList.remove(
+"active"
+);
 
 });
 
 });
+
+
 
 const progressBar =
-document.querySelector(".scroll-progress");
+document.querySelector(
+".scroll-progress"
+);
 
 window.addEventListener(
 "scroll",
@@ -40,136 +74,38 @@ const docHeight =
 document.body.scrollHeight -
 window.innerHeight;
 
-const scrollPercent =
+const progress =
 (scrollTop / docHeight) * 100;
 
+if(progressBar){
+
 progressBar.style.width =
-scrollPercent + "%";
-
-});
-
-const cursorGlow =
-document.querySelector(".cursor-glow");
-
-document.addEventListener(
-"mousemove",
-(e) => {
-
-cursorGlow.style.left =
-e.clientX + "px";
-
-cursorGlow.style.top =
-e.clientY + "px";
-
-});
-
-const cards =
-document.querySelectorAll(
-".glass-card, .stat-card"
-);
-
-cards.forEach(card => {
-
-card.addEventListener(
-"mousemove",
-(e) => {
-
-const rect =
-card.getBoundingClientRect();
-
-const x =
-e.clientX - rect.left;
-
-const y =
-e.clientY - rect.top;
-
-const centerX =
-rect.width / 2;
-
-const centerY =
-rect.height / 2;
-
-const rotateX =
-((y - centerY) / 20);
-
-const rotateY =
-((centerX - x) / 20);
-
-card.style.transform =
-`
-perspective(1000px)
-rotateX(${rotateX}deg)
-rotateY(${rotateY}deg)
-translateY(-8px)
-`;
-
-});
-
-card.addEventListener(
-"mouseleave",
-() => {
-
-card.style.transform =
-`
-perspective(1000px)
-rotateX(0deg)
-rotateY(0deg)
-translateY(0px)
-`;
-
-});
-
-});
-
-const revealElements =
-document.querySelectorAll(
-"section, .glass-card, .stat-card"
-);
-
-const revealOnScroll = () => {
-
-const triggerBottom =
-window.innerHeight * 0.88;
-
-revealElements.forEach(el => {
-
-const rect =
-el.getBoundingClientRect();
-
-if(rect.top < triggerBottom){
-
-el.classList.add("revealed");
+progress + "%";
 
 }
 
-});
-
-};
-
-window.addEventListener(
-"scroll",
-revealOnScroll
+const network =
+document.querySelector(
+".ecosystem-network"
 );
 
-revealOnScroll();
+const grid =
+document.querySelector(
+".ai-grid"
+);
 
-window.addEventListener(
-"scroll",
-() => {
+if(network){
 
-const scrolled =
-window.pageYOffset;
+network.style.transform =
+`translateY(${scrollTop * 0.12}px)`;
 
-document.querySelectorAll(
-".glass-card"
-).forEach((card,index) => {
+}
 
-const speed =
-(index + 1) * 0.02;
+if(grid){
 
-card.style.transform +=
-` translateY(${scrolled * speed * 0.08}px)`;
+grid.style.transform =
+`translateY(${scrollTop * 0.05}px)`;
 
-});
+}
 
 });
