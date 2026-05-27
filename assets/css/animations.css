@@ -1,0 +1,238 @@
+/* =========================================================
+   GLOBAL CINEMATIC ANIMATION ENGINE
+========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(80px) scale(0.96);
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* =========================================================
+   STAGGER SYSTEM
+========================================================= */
+
+.dashboard-panel,
+.command-card,
+.architecture-item,
+.ecosystem-node,
+.intelligence-block,
+.timeline-card,
+.infrastructure-box,
+.research-card,
+.contact-card,
+.product-card,
+.vision-card,
+.faq-card,
+.glass-card {
+    opacity: 0;
+    transform: translateY(70px);
+}
+
+.dashboard-panel.active,
+.command-card.active,
+.architecture-item.active,
+.ecosystem-node.active,
+.intelligence-block.active,
+.timeline-card.active,
+.infrastructure-box.active,
+.research-card.active,
+.contact-card.active,
+.product-card.active,
+.vision-card.active,
+.faq-card.active,
+.glass-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   HOVER FLOAT
+========================================================= */
+
+.dashboard-panel,
+.command-card,
+.architecture-item,
+.ecosystem-node,
+.intelligence-block,
+.timeline-card,
+.infrastructure-box,
+.research-card,
+.contact-card,
+.product-card,
+.vision-card,
+.faq-card,
+.glass-card {
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease,
+        background 0.5s ease;
+}
+
+.dashboard-panel:hover,
+.command-card:hover,
+.architecture-item:hover,
+.ecosystem-node:hover,
+.intelligence-block:hover,
+.timeline-card:hover,
+.infrastructure-box:hover,
+.research-card:hover,
+.contact-card:hover,
+.product-card:hover,
+.vision-card:hover,
+.faq-card:hover,
+.glass-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0,255,255,0.35);
+    box-shadow:
+        0 0 40px rgba(0,140,255,0.18),
+        0 0 90px rgba(0,255,255,0.08);
+}
+
+/* =========================================================
+   HERO TITLE GLOW
+========================================================= */
+
+.hero-title,
+.hero h1 {
+    animation: heroGlow 4s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+
+    0% {
+        text-shadow:
+            0 0 10px rgba(0,140,255,0.2);
+    }
+
+    50% {
+        text-shadow:
+            0 0 25px rgba(0,255,255,0.45),
+            0 0 60px rgba(0,140,255,0.25);
+    }
+
+    100% {
+        text-shadow:
+            0 0 10px rgba(0,140,255,0.2);
+    }
+}
+
+/* =========================================================
+   BUTTON ENERGY
+========================================================= */
+
+.btn-primary,
+.hero-btn,
+.primary-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before,
+.hero-btn::before,
+.primary-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.25),
+            transparent
+        );
+    transition: 0.8s;
+}
+
+.btn-primary:hover::before,
+.hero-btn:hover::before,
+.primary-btn:hover::before {
+    left: 130%;
+}
+
+/* =========================================================
+   GRID MOTION
+========================================================= */
+
+.hero-grid,
+.cyber-grid,
+.grid-overlay {
+    animation: gridMove 25s linear infinite;
+}
+
+@keyframes gridMove {
+
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 1000px;
+    }
+}
+
+/* =========================================================
+   FLOATING ORBS
+========================================================= */
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: orbFloat 8s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-35px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .reveal {
+        transform: translateY(40px);
+    }
+
+    .dashboard-panel:hover,
+    .command-card:hover,
+    .architecture-item:hover,
+    .ecosystem-node:hover,
+    .intelligence-block:hover,
+    .timeline-card:hover,
+    .infrastructure-box:hover,
+    .research-card:hover,
+    .contact-card:hover,
+    .product-card:hover,
+    .vision-card:hover,
+    .faq-card:hover,
+    .glass-card:hover {
+        transform: translateY(-5px);
+    }
+
+}

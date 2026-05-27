@@ -881,3 +881,203 @@ overflow:hidden;
 
 }
 
+/* =========================================================
+   PHASE 12.1 — GLOBAL REVEAL ENGINE
+========================================================= */
+
+const revealItems = document.querySelectorAll(`
+.reveal,
+.command-card,
+.dashboard-panel,
+.ecosystem-node,
+.intelligence-block,
+.timeline-card,
+.roadmap-node,
+.architecture-item,
+.infrastructure-box
+`);
+
+const revealObserver = new IntersectionObserver(
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+},
+{
+    threshold: 0.12
+}
+);
+
+revealItems.forEach(item=>{
+
+    item.classList.add("reveal");
+
+    revealObserver.observe(item);
+
+});
+
+/* =========================================================
+   STAGGER AUTO-DETECTION
+========================================================= */
+
+document.querySelectorAll(`
+.command-card,
+.dashboard-panel,
+.ecosystem-node,
+.intelligence-block,
+.timeline-card,
+.roadmap-node,
+.architecture-item,
+.infrastructure-box
+`).forEach((card,index)=>{
+
+    const delay = (index % 5) + 1;
+
+    card.classList.add(`reveal-delay-${delay}`);
+
+});
+
+/* =========================================================
+   GLOBAL CINEMATIC REVEAL ENGINE
+========================================================= */
+
+const revealItems = document.querySelectorAll(
+`
+.dashboard-panel,
+.command-card,
+.architecture-item,
+.ecosystem-node,
+.intelligence-block,
+.timeline-card,
+.infrastructure-box,
+.research-card,
+.contact-card,
+.product-card,
+.vision-card,
+.faq-card,
+.glass-card,
+.hero-content,
+.hero-text,
+.hero-buttons,
+.section-header,
+.stat-card,
+.feature-card
+`
+);
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("reveal");
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+}, {
+    threshold: 0.12
+});
+
+revealItems.forEach((item, index) => {
+
+    item.style.transitionDelay = `${index * 0.08}s`;
+
+    revealObserver.observe(item);
+
+});
+
+/* =========================================================
+   SMOOTH SCROLL ENGINE
+========================================================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener('click', function (e) {
+
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute('href'));
+
+        if(target){
+
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+        }
+
+    });
+
+});
+
+/* =========================================================
+   PARALLAX BACKGROUND
+========================================================= */
+
+window.addEventListener("scroll", () => {
+
+    const scrollY = window.scrollY;
+
+    document.querySelectorAll(".floating-orb").forEach((orb, index) => {
+
+        orb.style.transform =
+        `translateY(${scrollY * (0.05 + index * 0.02)}px)`;
+
+    });
+
+});
+
+/* =========================================================
+   DYNAMIC NAVBAR
+========================================================= */
+
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 50){
+
+        navbar.classList.add("navbar-scrolled");
+
+    } else {
+
+        navbar.classList.remove("navbar-scrolled");
+
+    }
+
+});
+
+/* =========================================================
+   PREMIUM BUTTON MAGNETIC EFFECT
+========================================================= */
+
+document.querySelectorAll(
+".btn-primary, .hero-btn, .primary-btn"
+).forEach(button => {
+
+    button.addEventListener("mousemove", e => {
+
+        const rect = button.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        button.style.setProperty("--x", `${x}px`);
+        button.style.setProperty("--y", `${y}px`);
+
+    });
+
+});
