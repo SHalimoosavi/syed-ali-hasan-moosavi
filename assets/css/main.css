@@ -4312,3 +4312,208 @@ font-size:1.5rem;
 }
 
 }
+
+/* =======================================================
+   PHASE 11.4 MAGNETIC INTERACTION SYSTEM
+======================================================= */
+
+/* =======================================================
+   MAGNETIC BUTTONS
+======================================================= */
+
+.magnetic{
+
+position:relative;
+
+transition:
+
+transform .18s ease-out,
+
+box-shadow .25s ease,
+
+background .25s ease;
+
+will-change:transform;
+
+}
+
+/* =======================================================
+   BUTTON ENERGY FIELD
+======================================================= */
+
+.magnetic::before{
+
+content:"";
+
+position:absolute;
+
+inset:-2px;
+
+border-radius:inherit;
+
+background:
+radial-gradient(
+circle at center,
+rgba(91,140,255,.25),
+transparent 70%
+);
+
+opacity:0;
+
+transition:
+opacity .3s ease;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+.magnetic:hover::before{
+
+opacity:1;
+
+}
+
+/* =======================================================
+   BUTTON PRESS EFFECT
+======================================================= */
+
+.magnetic:active{
+
+transform:
+scale(.96);
+
+}
+
+/* =======================================================
+   FLOATING UI EFFECT
+======================================================= */
+
+.float-ui{
+
+animation:
+floatUI 6s ease-in-out infinite;
+
+}
+
+@keyframes floatUI{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-6px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* =======================================================
+   CURSOR LIGHT
+======================================================= */
+
+.cursor-light{
+
+position:fixed;
+
+width:280px;
+height:280px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(91,140,255,.14),
+transparent 70%
+);
+
+pointer-events:none;
+
+z-index:9999;
+
+transform:
+translate(-50%,-50%);
+
+mix-blend-mode:screen;
+
+transition:
+transform .08s linear;
+
+}
+
+/* =======================================================
+   PREMIUM HOVER STATES
+======================================================= */
+
+.glass-card:hover h3{
+
+background:
+linear-gradient(
+90deg,
+#ffffff,
+#5b8cff
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+/* =======================================================
+   CARD LIGHT FOLLOW
+======================================================= */
+
+.glass-card{
+
+overflow:hidden;
+
+}
+
+.glass-card .light-follow{
+
+position:absolute;
+
+width:200px;
+height:200px;
+
+background:
+radial-gradient(
+circle,
+rgba(91,140,255,.18),
+transparent 70%
+);
+
+pointer-events:none;
+
+border-radius:50%;
+
+transform:
+translate(-50%,-50%);
+
+opacity:0;
+
+transition:
+opacity .2s ease;
+
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media(max-width:768px){
+
+.cursor-light{
+
+display:none;
+
+}
+
+}

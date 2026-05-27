@@ -459,3 +459,137 @@ card.style.transform = "";
 );
 
 });
+
+/* =======================================================
+   PHASE 11.4 MAGNETIC INTERACTION ENGINE
+======================================================= */
+
+/* =======================================================
+   MAGNETIC BUTTONS
+======================================================= */
+
+document.querySelectorAll(
+".btn,\
+button,\
+.cta-button"
+).forEach(btn=>{
+
+btn.classList.add(
+"magnetic",
+"float-ui"
+);
+
+btn.addEventListener(
+"mousemove",
+e=>{
+
+const rect =
+btn.getBoundingClientRect();
+
+const x =
+e.clientX - rect.left - rect.width / 2;
+
+const y =
+e.clientY - rect.top - rect.height / 2;
+
+btn.style.transform =
+
+`translate(
+${x * 0.18}px,
+${y * 0.18}px
+)
+scale(1.04)`;
+
+}
+);
+
+btn.addEventListener(
+"mouseleave",
+()=>{
+
+btn.style.transform = "";
+
+}
+);
+
+});
+
+/* =======================================================
+   CURSOR LIGHT SYSTEM
+======================================================= */
+
+const cursor =
+document.createElement("div");
+
+cursor.classList.add(
+"cursor-light"
+);
+
+document.body.appendChild(
+cursor
+);
+
+document.addEventListener(
+"mousemove",
+e=>{
+
+cursor.style.left =
+e.clientX + "px";
+
+cursor.style.top =
+e.clientY + "px";
+
+}
+);
+
+/* =======================================================
+   CARD LIGHT FOLLOW
+======================================================= */
+
+document.querySelectorAll(
+".glass-card"
+).forEach(card=>{
+
+const light =
+document.createElement("div");
+
+light.classList.add(
+"light-follow"
+);
+
+card.appendChild(light);
+
+card.addEventListener(
+"mousemove",
+e=>{
+
+const rect =
+card.getBoundingClientRect();
+
+const x =
+e.clientX - rect.left;
+
+const y =
+e.clientY - rect.top;
+
+light.style.left =
+x + "px";
+
+light.style.top =
+y + "px";
+
+light.style.opacity = 1;
+
+}
+);
+
+card.addEventListener(
+"mouseleave",
+()=>{
+
+light.style.opacity = 0;
+
+}
+);
+
+});
