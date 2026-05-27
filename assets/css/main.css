@@ -4517,3 +4517,406 @@ display:none;
 }
 
 }
+
+/* =======================================================
+   PHASE 11.5 ECOSYSTEM GRAPH
+======================================================= */
+
+.ecosystem-graph-section{
+
+position:relative;
+
+padding:180px 0;
+
+overflow:hidden;
+
+}
+
+/* =======================================================
+   GRAPH CONTAINER
+======================================================= */
+
+.ecosystem-graph{
+
+position:relative;
+
+height:900px;
+
+margin-top:100px;
+
+}
+
+/* =======================================================
+   CENTER CORE
+======================================================= */
+
+.ecosystem-core{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:
+translate(-50%,-50%);
+
+width:260px;
+height:260px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+circle,
+rgba(91,140,255,.30),
+rgba(0,224,255,.08),
+rgba(255,255,255,.02)
+);
+
+backdrop-filter:
+blur(20px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+z-index:5;
+
+box-shadow:
+
+0 0 100px rgba(91,140,255,.25),
+
+0 0 200px rgba(0,224,255,.12);
+
+animation:
+coreFloat 8s ease-in-out infinite;
+
+}
+
+@keyframes coreFloat{
+
+0%{
+transform:
+translate(-50%,-50%)
+translateY(0px);
+}
+
+50%{
+transform:
+translate(-50%,-50%)
+translateY(-20px);
+}
+
+100%{
+transform:
+translate(-50%,-50%)
+translateY(0px);
+}
+
+}
+
+/* =======================================================
+   CORE PULSE
+======================================================= */
+
+.core-pulse{
+
+position:absolute;
+
+inset:-30px;
+
+border-radius:50%;
+
+border:
+1px solid rgba(91,140,255,.18);
+
+animation:
+pulseCore 4s infinite;
+
+}
+
+@keyframes pulseCore{
+
+0%{
+
+transform:scale(.8);
+
+opacity:.8;
+
+}
+
+100%{
+
+transform:scale(1.4);
+
+opacity:0;
+
+}
+
+}
+
+.core-content{
+
+text-align:center;
+
+z-index:2;
+
+}
+
+.core-content h3{
+
+font-size:3rem;
+
+margin-bottom:10px;
+
+}
+
+/* =======================================================
+   GRAPH NODES
+======================================================= */
+
+.graph-node{
+
+position:absolute;
+
+width:240px;
+
+padding:28px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.03)
+);
+
+backdrop-filter:
+blur(24px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.25);
+
+transition:
+all .5s ease;
+
+animation:
+nodeFloat 8s ease-in-out infinite;
+
+}
+
+.graph-node:hover{
+
+transform:
+translateY(-14px)
+scale(1.04);
+
+border-color:
+rgba(91,140,255,.25);
+
+box-shadow:
+
+0 40px 120px rgba(0,0,0,.35),
+
+0 0 80px rgba(91,140,255,.18);
+
+}
+
+.graph-node h3{
+
+font-size:1.6rem;
+
+margin-bottom:10px;
+
+}
+
+.graph-node span{
+
+color:#93c5fd;
+
+font-size:.95rem;
+
+letter-spacing:1px;
+
+}
+
+@keyframes nodeFloat{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* =======================================================
+   NODE POSITIONS
+======================================================= */
+
+.node-nexus{
+
+top:60px;
+left:120px;
+
+}
+
+.node-hospital{
+
+top:120px;
+right:80px;
+
+animation-delay:1s;
+
+}
+
+.node-syj{
+
+bottom:80px;
+right:120px;
+
+animation-delay:2s;
+
+}
+
+.node-ai{
+
+bottom:100px;
+left:80px;
+
+animation-delay:3s;
+
+}
+
+.node-cloud{
+
+top:360px;
+left:40px;
+
+animation-delay:4s;
+
+}
+
+.node-research{
+
+top:380px;
+right:20px;
+
+animation-delay:5s;
+
+}
+
+/* =======================================================
+   SVG CONNECTIONS
+======================================================= */
+
+.graph-lines{
+
+position:absolute;
+
+inset:0;
+
+width:100%;
+height:100%;
+
+z-index:0;
+
+}
+
+.graph-lines line{
+
+stroke:
+rgba(91,140,255,.18);
+
+stroke-width:2;
+
+stroke-dasharray:10 10;
+
+animation:
+lineMove 8s linear infinite;
+
+}
+
+@keyframes lineMove{
+
+100%{
+
+stroke-dashoffset:-100;
+
+}
+
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media(max-width:768px){
+
+.ecosystem-graph{
+
+height:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:30px;
+
+align-items:center;
+
+}
+
+.ecosystem-core{
+
+position:relative;
+
+top:auto;
+left:auto;
+
+transform:none;
+
+width:220px;
+height:220px;
+
+margin-bottom:40px;
+
+}
+
+.graph-node{
+
+position:relative;
+
+top:auto !important;
+left:auto !important;
+right:auto !important;
+bottom:auto !important;
+
+width:100%;
+
+max-width:340px;
+
+}
+
+.graph-lines{
+
+display:none;
+
+}
+
+}

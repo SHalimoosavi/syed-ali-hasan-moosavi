@@ -593,3 +593,58 @@ light.style.opacity = 0;
 );
 
 });
+
+/* =======================================================
+   PHASE 11.5 ECOSYSTEM GRAPH ENGINE
+======================================================= */
+
+document.querySelectorAll(
+".graph-node"
+).forEach(node=>{
+
+node.addEventListener(
+"mousemove",
+e=>{
+
+const rect =
+node.getBoundingClientRect();
+
+const x =
+e.clientX - rect.left;
+
+const y =
+e.clientY - rect.top;
+
+const centerX =
+rect.width / 2;
+
+const centerY =
+rect.height / 2;
+
+const rotateY =
+((x - centerX) / centerX) * 10;
+
+const rotateX =
+((y - centerY) / centerY) * -10;
+
+node.style.transform =
+
+`perspective(1000px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+translateY(-10px)
+scale(1.03)`;
+
+}
+);
+
+node.addEventListener(
+"mouseleave",
+()=>{
+
+node.style.transform = "";
+
+}
+);
+
+});
