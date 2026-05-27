@@ -1,9 +1,12 @@
-// =====================================
-// Syed Ali Hasan Moosavi Portfolio
-// Phase 7 Premium JS
-// =====================================
+/* ======================================================
+   SYED ALI HASAN MOOSAVI
+   FOUNDER COMMAND CENTER
+   PHASE 8C FINAL JAVASCRIPT
+====================================================== */
 
-// ---------- ROLE ANIMATION ----------
+/* ======================================================
+   ROLE ROTATOR
+====================================================== */
 
 const roles = [
   "Founder",
@@ -15,14 +18,16 @@ const roles = [
   "Visionary Technologist"
 ];
 
-const roleElement =
-document.getElementById("typing-text");
+const typingText =
+document.getElementById(
+"typing-text"
+);
 
-if(roleElement){
+if(typingText){
 
 let roleIndex = 0;
 
-roleElement.textContent =
+typingText.textContent =
 roles[roleIndex];
 
 setInterval(()=>{
@@ -33,14 +38,14 @@ if(roleIndex >= roles.length){
 roleIndex = 0;
 }
 
-roleElement.style.opacity = "0";
+typingText.style.opacity="0";
 
 setTimeout(()=>{
 
-roleElement.textContent =
+typingText.textContent =
 roles[roleIndex];
 
-roleElement.style.opacity = "1";
+typingText.style.opacity="1";
 
 },300);
 
@@ -48,7 +53,9 @@ roleElement.style.opacity = "1";
 
 }
 
-// ---------- MOBILE MENU ----------
+/* ======================================================
+   MOBILE MENU
+====================================================== */
 
 const menuToggle =
 document.getElementById(
@@ -76,23 +83,31 @@ navLinks.classList.toggle(
 }
 
 document
-.querySelectorAll("#navLinks a")
+.querySelectorAll(
+"#navLinks a"
+)
 .forEach(link=>{
 
 link.addEventListener(
 "click",
 ()=>{
 
+if(navLinks){
+
 navLinks.classList.remove(
 "show"
 );
+
+}
 
 }
 );
 
 });
 
-// ---------- NAVBAR EFFECT ----------
+/* ======================================================
+   NAVBAR EFFECT
+====================================================== */
 
 const navbar =
 document.querySelector(
@@ -111,7 +126,7 @@ navbar.style.background =
 "rgba(5,8,22,.95)";
 
 navbar.style.boxShadow =
-"0 10px 30px rgba(0,0,0,.4)";
+"0 10px 40px rgba(0,0,0,.4)";
 
 }else{
 
@@ -126,7 +141,9 @@ navbar.style.boxShadow =
 }
 );
 
-// ---------- SMOOTH SCROLL ----------
+/* ======================================================
+   SMOOTH SCROLL
+====================================================== */
 
 document
 .querySelectorAll(
@@ -142,7 +159,9 @@ e.preventDefault();
 
 const target =
 document.querySelector(
-this.getAttribute("href")
+this.getAttribute(
+"href"
+)
 );
 
 if(target){
@@ -161,7 +180,71 @@ block:"start"
 
 });
 
-// ---------- REVEAL ANIMATION ----------
+/* ======================================================
+   ACTIVE SECTION NAVIGATION
+====================================================== */
+
+const sections =
+document.querySelectorAll(
+"section[id]"
+);
+
+window.addEventListener(
+"scroll",
+()=>{
+
+const scrollY =
+window.pageYOffset;
+
+sections.forEach(section=>{
+
+const sectionHeight =
+section.offsetHeight;
+
+const sectionTop =
+section.offsetTop - 150;
+
+const sectionId =
+section.getAttribute("id");
+
+const navItem =
+document.querySelector(
+'.nav-links a[href="#'+
+sectionId +
+'"]'
+);
+
+if(
+scrollY > sectionTop &&
+scrollY <= sectionTop + sectionHeight
+){
+
+if(navItem){
+
+navItem.style.color =
+"#00e0ff";
+
+}
+
+}else{
+
+if(navItem){
+
+navItem.style.color =
+"";
+
+}
+
+}
+
+});
+
+}
+);
+
+/* ======================================================
+   REVEAL ON SCROLL
+====================================================== */
 
 const revealItems =
 document.querySelectorAll(
@@ -177,10 +260,9 @@ entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
-entry.target.style.opacity="1";
-
-entry.target.style.transform=
-"translateY(0)";
+entry.target.classList.add(
+"active"
+);
 
 }
 
@@ -196,19 +278,101 @@ threshold:0.1
 
 revealItems.forEach(item=>{
 
-item.style.opacity="0";
-
-item.style.transform=
-"translateY(40px)";
-
-item.style.transition=
-"all .8s ease";
+item.classList.add(
+"reveal"
+);
 
 revealObserver.observe(item);
 
 });
 
-// ---------- PARTICLE SYSTEM ----------
+/* ======================================================
+   COUNTER ANIMATION
+====================================================== */
+
+const counters =
+document.querySelectorAll(
+".counter"
+);
+
+function animateCounter(counter){
+
+const target =
+parseInt(
+counter.dataset.target
+);
+
+let count = 0;
+
+const increment =
+target / 120;
+
+function update(){
+
+count += increment;
+
+if(count < target){
+
+counter.textContent =
+Math.floor(count);
+
+requestAnimationFrame(
+update
+);
+
+}else{
+
+counter.textContent =
+target;
+
+}
+
+}
+
+update();
+
+}
+
+const counterObserver =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+animateCounter(
+entry.target
+);
+
+counterObserver.unobserve(
+entry.target
+);
+
+}
+
+});
+
+},
+
+{
+threshold:0.3
+}
+
+);
+
+counters.forEach(counter=>{
+
+counterObserver.observe(
+counter
+);
+
+});
+
+/* ======================================================
+   PARTICLE ENGINE
+====================================================== */
 
 const canvas =
 document.getElementById(
@@ -255,10 +419,10 @@ this.radius =
 Math.random() * 2 + 1;
 
 this.speedX =
-(Math.random() - 0.5) * 0.4;
+(Math.random()-0.5)*0.4;
 
 this.speedY =
-(Math.random() - 0.5) * 0.4;
+(Math.random()-0.5)*0.4;
 
 }
 
@@ -294,7 +458,7 @@ Math.PI*2
 );
 
 ctx.fillStyle =
-"rgba(91,140,255,.5)";
+"rgba(91,140,255,.45)";
 
 ctx.fill();
 
@@ -306,7 +470,7 @@ function initParticles(){
 
 particles = [];
 
-for(let i=0;i<140;i++){
+for(let i=0;i<150;i++){
 
 particles.push(
 new Particle()
@@ -391,91 +555,57 @@ animateParticles();
 
 }
 
-// ---------- COUNTER ANIMATION ----------
+/* ======================================================
+   PARALLAX HERO
+====================================================== */
 
-const counters =
-document.querySelectorAll(
-".counter"
+const hero =
+document.querySelector(
+".hero"
 );
 
-function animateCounter(counter){
+window.addEventListener(
+"scroll",
+()=>{
 
-const target =
-parseInt(
-counter.dataset.target
-);
+if(!hero) return;
 
-let value = 0;
+const offset =
+window.pageYOffset;
 
-const increment =
-target / 120;
-
-function update(){
-
-value += increment;
-
-if(value < target){
-
-counter.textContent =
-Math.floor(value);
-
-requestAnimationFrame(
-update
-);
-
-}else{
-
-counter.textContent =
-target;
+hero.style.transform =
+"translateY(" +
+(offset * 0.15) +
+"px)";
 
 }
-
-}
-
-update();
-
-}
-
-const counterObserver =
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-animateCounter(
-entry.target
 );
 
-counterObserver.unobserve(
-entry.target
+/* ======================================================
+   PERFORMANCE
+====================================================== */
+
+window.addEventListener(
+"load",
+()=>{
+
+document.body.classList.add(
+"loaded"
 );
 
 }
-
-});
-
-},
-
-{
-threshold:0.3
-}
-
 );
 
-counters.forEach(counter=>{
-
-counterObserver.observe(
-counter
-);
-
-});
-
-// ---------- SIGNATURE ----------
+/* ======================================================
+   CONSOLE SIGNATURE
+====================================================== */
 
 console.log(
-"%cPortfolio Loaded Successfully",
-"color:#5b8cff;font-size:14px;font-weight:bold;"
+"%cSYED ALI HASAN MOOSAVI",
+"color:#5b8cff;font-size:16px;font-weight:bold;"
+);
+
+console.log(
+"%cFounder Command Center Loaded",
+"color:#00e0ff;font-size:12px;"
 );
