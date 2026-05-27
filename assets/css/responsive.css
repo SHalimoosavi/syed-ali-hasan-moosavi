@@ -1,0 +1,62 @@
+@media(max-width:768px){
+
+.hero h1{
+    font-size:64px;
+}
+
+.hero h2{
+    font-size:22px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.section-title{
+    font-size:42px;
+}
+
+.glass-card h3{
+    font-size:30px;
+}
+
+.glass-card p,
+.glass-card li{
+    font-size:18px;
+}
+
+.logo{
+    font-size:24px;
+    letter-spacing:4px;
+}
+
+.menu-btn{
+    width:64px;
+    height:64px;
+}
+
+}
+
+@media(max-width:480px){
+
+.hero{
+    padding-top:160px;
+}
+
+.hero h1{
+    font-size:52px;
+}
+
+.hero h2{
+    font-size:20px;
+}
+
+.section-title{
+    font-size:36px;
+}
+
+.stat-card h3{
+    font-size:48px;
+}
+
+}
