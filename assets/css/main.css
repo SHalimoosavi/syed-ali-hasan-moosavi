@@ -258,3 +258,170 @@ body{
     color:#94a3b8;
     line-height:2;
 }
+
+body::before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:
+    radial-gradient(circle,
+    rgba(79,140,255,0.15),
+    transparent 70%);
+    top:-200px;
+    right:-200px;
+    z-index:-1;
+    animation:
+    glowPulse 8s infinite ease-in-out;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:
+    radial-gradient(circle,
+    rgba(0,255,255,0.08),
+    transparent 70%);
+    bottom:-200px;
+    left:-200px;
+    z-index:-1;
+    animation:
+    glowPulse 10s infinite ease-in-out;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        135deg,
+        rgba(79,140,255,0.05),
+        rgba(0,255,255,0.02),
+        transparent
+    );
+
+    background-size:400% 400%;
+    animation:
+    gradientShift 12s ease infinite;
+}
+
+.glass-card{
+    transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border 0.4s ease;
+}
+
+.glass-card:hover{
+    transform:
+    translateY(-12px);
+
+    border:
+    1px solid rgba(79,140,255,0.4);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.45),
+    0 0 30px rgba(79,140,255,0.2);
+}
+
+.stat-card{
+    transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.stat-card:hover{
+    transform:
+    translateY(-10px)
+    scale(1.02);
+
+    box-shadow:
+    0 20px 50px rgba(79,140,255,0.18);
+}
+
+.primary-btn{
+    position:relative;
+    overflow:hidden;
+}
+
+.primary-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.3),
+        transparent
+    );
+
+    transition:0.7s;
+}
+
+.primary-btn:hover::before{
+    left:100%;
+}
+
+.logo{
+    animation:
+    floating 5s ease-in-out infinite;
+}
+
+.hero-content{
+    animation:
+    fadeUp 1s ease;
+}
+
+.glass-card,
+.stat-card{
+    animation:
+    fadeUp 1s ease;
+}
+
+.mobile-menu{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:320px;
+    height:100vh;
+
+    background:
+    rgba(5,10,25,0.96);
+
+    backdrop-filter:blur(20px);
+
+    transition:0.5s ease;
+
+    z-index:999;
+    padding:120px 40px;
+
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+
+    border-left:
+    1px solid rgba(255,255,255,0.08);
+}
+
+.mobile-menu.active{
+    right:0;
+}
+
+.mobile-menu a{
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+    font-weight:600;
+}
