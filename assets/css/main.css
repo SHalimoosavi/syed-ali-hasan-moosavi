@@ -3547,3 +3547,406 @@ line-height:1.8;
 
 }
 
+/* =======================================================
+   PHASE 11.2 AI ORB INTELLIGENCE SYSTEM
+======================================================= */
+
+/* =======================================================
+   ORBIT SYSTEM
+======================================================= */
+
+.orbit-system{
+
+position:absolute;
+
+top:50%;
+right:8%;
+
+width:700px;
+height:700px;
+
+transform:
+translateY(-50%);
+
+pointer-events:none;
+
+z-index:1;
+
+}
+
+/* =======================================================
+   ORBIT RINGS
+======================================================= */
+
+.orbit-ring{
+
+position:absolute;
+
+border-radius:50%;
+
+border:
+1px solid rgba(91,140,255,.10);
+
+top:50%;
+left:50%;
+
+transform:
+translate(-50%,-50%);
+
+}
+
+.ring-1{
+
+width:320px;
+height:320px;
+
+animation:
+rotateRing 18s linear infinite;
+
+}
+
+.ring-2{
+
+width:460px;
+height:460px;
+
+border-style:dashed;
+
+animation:
+rotateRingReverse 28s linear infinite;
+
+}
+
+.ring-3{
+
+width:620px;
+height:620px;
+
+opacity:.5;
+
+animation:
+rotateRing 42s linear infinite;
+
+}
+
+/* =======================================================
+   ORBIT NODES
+======================================================= */
+
+.orbit-node{
+
+position:absolute;
+
+width:18px;
+height:18px;
+
+border-radius:50%;
+
+background:
+linear-gradient(
+145deg,
+#5b8cff,
+#00e0ff
+);
+
+box-shadow:
+0 0 30px rgba(91,140,255,.8);
+
+}
+
+/* =======================================================
+   NODE POSITIONS
+======================================================= */
+
+.node-1{
+
+top:8%;
+left:50%;
+
+}
+
+.node-2{
+
+bottom:12%;
+left:18%;
+
+}
+
+.node-3{
+
+right:10%;
+top:45%;
+
+}
+
+.node-4{
+
+left:8%;
+top:25%;
+
+}
+
+.node-5{
+
+bottom:18%;
+right:20%;
+
+}
+
+/* =======================================================
+   PULSE WAVES
+======================================================= */
+
+.pulse-ring{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+width:260px;
+height:260px;
+
+border-radius:50%;
+
+border:
+1px solid rgba(91,140,255,.18);
+
+transform:
+translate(-50%,-50%);
+
+animation:
+pulseWave 4s infinite;
+
+}
+
+.pulse-ring:nth-child(2){
+
+animation-delay:1.5s;
+
+}
+
+.pulse-ring:nth-child(3){
+
+animation-delay:3s;
+
+}
+
+@keyframes pulseWave{
+
+0%{
+
+transform:
+translate(-50%,-50%)
+scale(.7);
+
+opacity:.8;
+
+}
+
+100%{
+
+transform:
+translate(-50%,-50%)
+scale(1.8);
+
+opacity:0;
+
+}
+
+}
+
+/* =======================================================
+   HUD LABELS
+======================================================= */
+
+.hud-label{
+
+position:absolute;
+
+padding:12px 18px;
+
+border-radius:14px;
+
+background:
+rgba(255,255,255,.05);
+
+backdrop-filter:
+blur(18px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+font-size:.85rem;
+
+letter-spacing:1px;
+
+color:#dbeafe;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.25);
+
+animation:
+hudFloat 6s ease-in-out infinite;
+
+}
+
+.label-ai{
+
+top:15%;
+left:5%;
+
+}
+
+.label-health{
+
+bottom:18%;
+left:12%;
+
+animation-delay:1s;
+
+}
+
+.label-cloud{
+
+top:25%;
+right:0;
+
+animation-delay:2s;
+
+}
+
+.label-chain{
+
+bottom:12%;
+right:10%;
+
+animation-delay:3s;
+
+}
+
+@keyframes hudFloat{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* =======================================================
+   AI RADAR
+======================================================= */
+
+.ai-radar{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+width:240px;
+height:240px;
+
+transform:
+translate(-50%,-50%);
+
+border-radius:50%;
+
+overflow:hidden;
+
+opacity:.35;
+
+}
+
+.ai-radar::before{
+
+content:"";
+
+position:absolute;
+
+inset:-50%;
+
+background:
+conic-gradient(
+transparent,
+rgba(0,224,255,.45),
+transparent 35%
+);
+
+animation:
+radarRotate 4s linear infinite;
+
+}
+
+@keyframes radarRotate{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media(max-width:768px){
+
+.orbit-system{
+
+width:380px;
+height:380px;
+
+right:-15%;
+
+top:32%;
+
+opacity:.7;
+
+}
+
+.ring-1{
+
+width:180px;
+height:180px;
+
+}
+
+.ring-2{
+
+width:260px;
+height:260px;
+
+}
+
+.ring-3{
+
+width:340px;
+height:340px;
+
+}
+
+.hud-label{
+
+font-size:.65rem;
+
+padding:8px 10px;
+
+}
+
+.orbit-node{
+
+width:10px;
+height:10px;
+
+}
+
+}
