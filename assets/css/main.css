@@ -6680,3 +6680,233 @@ img{
     }
 
 }
+
+/* =========================================================
+   PHASE 15 — UI STABILIZATION RECOVERY
+========================================================= */
+
+/* RESET BROKEN GLOBAL EFFECTS */
+
+section::before,
+.hero::after,
+body::before{
+
+    pointer-events: none;
+    z-index: 0;
+
+}
+
+/* PREVENT OVERLAY BREAKING MENU */
+
+.navbar,
+.mobile-menu,
+.mobile-toggle,
+.nav-links{
+
+    position: relative;
+    z-index: 99999 !important;
+
+}
+
+/* FIX MOBILE MENU BUTTON */
+
+.mobile-toggle{
+
+    cursor: pointer;
+    pointer-events: auto !important;
+
+}
+
+/* FIX MENU OPEN STATE */
+
+.mobile-menu{
+
+    position: fixed !important;
+
+    top: 90px;
+    right: 20px;
+
+    width: 260px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+
+    transition: all 0.35s ease;
+
+    z-index: 999999;
+
+}
+
+/* ACTIVE MENU */
+
+.mobile-menu.active{
+
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+}
+
+/* CLEAN BACKGROUND */
+
+body{
+
+    overflow-x: hidden;
+
+    background:
+    linear-gradient(
+        180deg,
+        #040816,
+        #071120,
+        #081426
+    );
+
+}
+
+/* FIX HUGE SPACING */
+
+section{
+
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+
+}
+
+/* REMOVE EXCESSIVE CARD FLOAT */
+
+.dashboard-panel:hover,
+.command-card:hover,
+.product-card:hover,
+.contact-card:hover{
+
+    transform: translateY(-4px);
+
+}
+
+/* STOP CHAOTIC IMAGE FLOATING */
+
+img,
+.core-circle,
+.hq-circle{
+
+    animation: none !important;
+
+}
+
+/* CLEAN HERO */
+
+.hero{
+
+    min-height: auto !important;
+    padding-top: 140px !important;
+    padding-bottom: 100px !important;
+
+}
+
+/* FIX HERO TITLE */
+
+.hero-title{
+
+    font-size: clamp(3rem, 9vw, 6rem) !important;
+    line-height: 1 !important;
+
+}
+
+/* CLEAN MOBILE BUTTONS */
+
+.primary-btn,
+.hero-btn{
+
+    width: auto;
+    min-width: 180px;
+
+}
+
+/* REMOVE BROKEN BACKGROUND ATTACHMENT */
+
+.hero,
+.founder-hero,
+.ecosystem-section{
+
+    background-attachment: scroll !important;
+
+}
+
+/* FIX FOOTER */
+
+footer{
+
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+    min-height: auto !important;
+
+}
+
+/* REMOVE EXCESSIVE BLUR */
+
+.dashboard-panel,
+.command-card,
+.product-card,
+.contact-card{
+
+    backdrop-filter: blur(12px);
+
+}
+
+/* MOBILE FIXES */
+
+@media(max-width:768px){
+
+    .navbar{
+
+        padding: 18px 20px !important;
+        min-height: 78px;
+
+    }
+
+    .logo{
+
+        font-size: 2rem !important;
+        letter-spacing: 4px;
+
+    }
+
+    .mobile-toggle{
+
+        width: 72px;
+        height: 72px;
+
+    }
+
+    .hero-title{
+
+        font-size: 4rem !important;
+
+    }
+
+    h2{
+
+        font-size: 2.5rem !important;
+
+    }
+
+    .core-circle,
+    .hq-circle{
+
+        width: 220px !important;
+        height: 220px !important;
+
+    }
+
+    .dashboard-panel,
+    .command-card,
+    .product-card,
+    .contact-card{
+
+        padding: 28px !important;
+        border-radius: 28px;
+
+    }
+
+}

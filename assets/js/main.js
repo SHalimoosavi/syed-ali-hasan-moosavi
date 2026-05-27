@@ -1081,3 +1081,24 @@ document.querySelectorAll(
     });
 
 });
+
+/* =========================================================
+   PHASE 15 — MOBILE MENU FIX
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const toggle = document.querySelector(".mobile-toggle");
+    const menu = document.querySelector(".mobile-menu");
+
+    if(toggle && menu){
+
+        toggle.addEventListener("click", () => {
+
+            menu.classList.toggle("active");
+
+        });
+
+    }
+
+});
