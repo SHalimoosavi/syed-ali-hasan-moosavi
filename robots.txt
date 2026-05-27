@@ -1,0 +1,9 @@
+User-agent: *
+
+Allow: /
+
+Sitemap:
+https://shalimoosavi.github.io/syed-ali-hasan-moosavi/sitemap.xml
+
+Host:
+https://shalimoosavi.github.io
