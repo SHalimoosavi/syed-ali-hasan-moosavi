@@ -12,7 +12,47 @@
 
 </head>
 
+<script>
+
+const particles =
+document.querySelector(".particles");
+
+for(let i = 0; i < 35; i++){
+
+const particle =
+document.createElement("span");
+
+particle.classList.add("particle");
+
+particle.style.left =
+Math.random() * 100 + "vw";
+
+particle.style.animationDuration =
+(8 + Math.random() * 12) + "s";
+
+particle.style.animationDelay =
+Math.random() * 5 + "s";
+
+particle.style.opacity =
+Math.random();
+
+particle.style.width =
+particle.style.height =
+(2 + Math.random() * 5) + "px";
+
+particles.appendChild(particle);
+
+}
+
+</script>
+
 <body>
+
+<div class="scroll-progress"></div>
+
+<div class="cursor-glow"></div>
+
+<div class="particles"></div>
 
     <!-- BACKGROUND -->
 
