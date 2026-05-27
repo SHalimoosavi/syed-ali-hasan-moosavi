@@ -11,20 +11,9 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:
-Inter,
-system-ui,
-sans-serif;
-
-background:
-linear-gradient(
-180deg,
-#050816,
-#081120,
-#050816);
-
-color:var(--text);
-
+font-family:Inter,sans-serif;
+background:#050816;
+color:white;
 overflow-x:hidden;
 }
 
@@ -33,52 +22,127 @@ width:min(1200px,92%);
 margin:auto;
 }
 
-section{
-padding:120px 0;
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+
+background:rgba(5,8,22,.65);
+
+backdrop-filter:blur(20px);
+
+border-bottom:
+1px solid rgba(255,255,255,.08);
 }
 
-.glass{
-background:var(--glass);
-backdrop-filter:blur(16px);
-border:1px solid var(--glass-border);
-border-radius:var(--radius-md);
-}
-
-.btn{
-display:inline-flex;
+.nav-container{
+display:flex;
+justify-content:space-between;
 align-items:center;
-justify-content:center;
 
-padding:14px 28px;
+padding:20px 0;
+}
+
+.logo{
+font-size:1.3rem;
+font-weight:700;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+}
+
+.hero{
+
+height:100vh;
+
+display:flex;
+align-items:center;
+
+position:relative;
+
+background:
+radial-gradient(
+circle at top right,
+rgba(91,140,255,.3),
+transparent 40%),
+
+radial-gradient(
+circle at bottom left,
+rgba(0,224,255,.15),
+transparent 40%);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero-badge{
+
+display:inline-block;
+
+padding:10px 20px;
 
 border-radius:999px;
 
+background:
+rgba(255,255,255,.08);
+
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:clamp(3rem,8vw,6rem);
+margin-bottom:10px;
+}
+
+.hero h2{
+font-size:2rem;
+color:#5b8cff;
+margin-bottom:20px;
+}
+
+.hero-description{
+max-width:700px;
+line-height:1.8;
+color:#cbd5e1;
+font-size:1.1rem;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+margin-top:40px;
+}
+
+.btn{
+padding:14px 30px;
+border-radius:999px;
 text-decoration:none;
-
 font-weight:600;
-
-transition:var(--transition);
 }
 
 .btn-primary{
+
 background:
 linear-gradient(
 135deg,
-var(--primary),
-var(--secondary));
+#5b8cff,
+#7f5cff);
 
 color:white;
-}
-
-.btn-primary:hover{
-transform:translateY(-4px);
 }
 
 .btn-outline{
 border:1px solid rgba(255,255,255,.2);
 color:white;
-}
-
-.btn-outline:hover{
-background:rgba(255,255,255,.08);
 }
