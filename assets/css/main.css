@@ -548,3 +548,57 @@ section{
     position:relative;
     z-index:2;
 }
+
+.contact-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+
+    padding:22px 28px;
+
+    border-radius:22px;
+
+    text-decoration:none;
+
+    font-size:20px;
+    font-weight:600;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(79,140,255,0.12),
+        rgba(0,255,255,0.08)
+    );
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(20px);
+
+    transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border 0.4s ease;
+}
+
+.contact-btn:hover{
+
+    transform:
+    translateY(-6px)
+    scale(1.02);
+
+    border:
+    1px solid rgba(79,140,255,0.35);
+
+    box-shadow:
+    0 10px 30px rgba(79,140,255,0.2);
+}
