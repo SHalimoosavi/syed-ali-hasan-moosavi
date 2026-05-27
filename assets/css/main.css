@@ -5581,3 +5581,346 @@ display:none;
 }
 
 }
+
+/* =======================================================
+   PHASE 11.8 PREMIUM MOBILE NAVIGATION
+======================================================= */
+
+/* =======================================================
+   MOBILE MENU BUTTON
+======================================================= */
+
+.menu-toggle{
+
+position:relative;
+
+width:60px;
+height:60px;
+
+display:none;
+
+align-items:center;
+justify-content:center;
+
+flex-direction:column;
+
+gap:7px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.06);
+
+backdrop-filter:
+blur(20px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+cursor:pointer;
+
+z-index:99999;
+
+transition:
+all .4s ease;
+
+}
+
+.menu-toggle span{
+
+width:26px;
+height:2px;
+
+background:#ffffff;
+
+border-radius:10px;
+
+transition:
+all .4s ease;
+
+}
+
+/* =======================================================
+   ACTIVE BUTTON
+======================================================= */
+
+.menu-toggle.active span:nth-child(1){
+
+transform:
+translateY(9px)
+rotate(45deg);
+
+}
+
+.menu-toggle.active span:nth-child(2){
+
+opacity:0;
+
+}
+
+.menu-toggle.active span:nth-child(3){
+
+transform:
+translateY(-9px)
+rotate(-45deg);
+
+}
+
+/* =======================================================
+   MOBILE OVERLAY
+======================================================= */
+
+.mobile-nav-overlay{
+
+position:fixed;
+
+inset:0;
+
+background:
+rgba(2,6,23,.65);
+
+backdrop-filter:
+blur(18px);
+
+opacity:0;
+
+visibility:hidden;
+
+transition:
+all .5s ease;
+
+z-index:9990;
+
+}
+
+.mobile-nav-overlay.active{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+/* =======================================================
+   MOBILE NAVIGATION
+======================================================= */
+
+@media(max-width:992px){
+
+.menu-toggle{
+
+display:flex;
+
+}
+
+.nav-links{
+
+position:fixed;
+
+top:0;
+right:-100%;
+
+width:85%;
+max-width:420px;
+
+height:100vh;
+
+padding:140px 40px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+background:
+
+linear-gradient(
+180deg,
+rgba(5,8,22,.96),
+rgba(7,16,33,.96)
+);
+
+backdrop-filter:
+blur(30px);
+
+border-left:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+-20px 0 80px rgba(0,0,0,.45);
+
+transition:
+right .6s cubic-bezier(.17,.89,.32,1.28);
+
+z-index:9999;
+
+overflow-y:auto;
+
+}
+
+.nav-links.active{
+
+right:0;
+
+}
+
+/* =======================================================
+   NAV LINKS
+======================================================= */
+
+.nav-links li{
+
+opacity:0;
+
+transform:
+translateX(40px);
+
+transition:
+all .5s ease;
+
+}
+
+.nav-links.active li{
+
+opacity:1;
+
+transform:
+translateX(0);
+
+}
+
+/* =======================================================
+   STAGGER ANIMATION
+======================================================= */
+
+.nav-links.active li:nth-child(1){
+
+transition-delay:.08s;
+
+}
+
+.nav-links.active li:nth-child(2){
+
+transition-delay:.16s;
+
+}
+
+.nav-links.active li:nth-child(3){
+
+transition-delay:.24s;
+
+}
+
+.nav-links.active li:nth-child(4){
+
+transition-delay:.32s;
+
+}
+
+.nav-links.active li:nth-child(5){
+
+transition-delay:.40s;
+
+}
+
+.nav-links.active li:nth-child(6){
+
+transition-delay:.48s;
+
+}
+
+.nav-links.active li:nth-child(7){
+
+transition-delay:.56s;
+
+}
+
+/* =======================================================
+   NAV LINKS STYLE
+======================================================= */
+
+.nav-links a{
+
+font-size:1.2rem;
+
+font-weight:600;
+
+padding:18px 22px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px solid rgba(255,255,255,.05);
+
+transition:
+all .35s ease;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.nav-links a::after{
+
+content:"↗";
+
+opacity:.5;
+
+transition:
+transform .3s ease;
+
+}
+
+.nav-links a:hover{
+
+background:
+rgba(91,140,255,.10);
+
+border-color:
+rgba(91,140,255,.20);
+
+transform:
+translateX(6px);
+
+}
+
+.nav-links a:hover::after{
+
+transform:
+translateX(4px)
+translateY(-2px);
+
+}
+
+/* =======================================================
+   NAVBAR
+======================================================= */
+
+.navbar{
+
+padding:18px 0;
+
+}
+
+}
+
+/* =======================================================
+   DESKTOP FIX
+======================================================= */
+
+@media(min-width:993px){
+
+.mobile-nav-overlay{
+
+display:none;
+
+}
+
+}

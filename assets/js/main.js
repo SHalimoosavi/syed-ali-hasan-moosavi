@@ -2,11 +2,20 @@
    MOBILE MENU
 ====================================================== */
 
+/* ======================================================
+   PREMIUM MOBILE NAVIGATION
+====================================================== */
+
 const menuToggle =
 document.getElementById("menuToggle");
 
 const navLinks =
 document.getElementById("navLinks");
+
+const mobileOverlay =
+document.querySelector(
+".mobile-nav-overlay"
+);
 
 if(menuToggle){
 
@@ -14,7 +23,83 @@ menuToggle.addEventListener(
 "click",
 ()=>{
 
-navLinks.classList.toggle("active");
+menuToggle.classList.toggle(
+"active"
+);
+
+navLinks.classList.toggle(
+"active"
+);
+
+mobileOverlay.classList.toggle(
+"active"
+);
+
+document.body.classList.toggle(
+"menu-open"
+);
+
+});
+
+}
+
+/* ======================================================
+   CLOSE MENU ON LINK CLICK
+====================================================== */
+
+document.querySelectorAll(
+".nav-links a"
+).forEach(link=>{
+
+link.addEventListener(
+"click",
+()=>{
+
+menuToggle.classList.remove(
+"active"
+);
+
+navLinks.classList.remove(
+"active"
+);
+
+mobileOverlay.classList.remove(
+"active"
+);
+
+document.body.classList.remove(
+"menu-open"
+);
+
+});
+
+});
+
+/* ======================================================
+   CLOSE ON OVERLAY CLICK
+====================================================== */
+
+if(mobileOverlay){
+
+mobileOverlay.addEventListener(
+"click",
+()=>{
+
+menuToggle.classList.remove(
+"active"
+);
+
+navLinks.classList.remove(
+"active"
+);
+
+mobileOverlay.classList.remove(
+"active"
+);
+
+document.body.classList.remove(
+"menu-open"
+);
 
 });
 
@@ -785,3 +870,14 @@ ${moveY}px
 );
 
 });
+
+/* =======================================================
+   MENU OPEN
+======================================================= */
+
+body.menu-open{
+
+overflow:hidden;
+
+}
+
