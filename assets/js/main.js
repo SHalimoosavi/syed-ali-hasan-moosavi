@@ -152,3 +152,24 @@ revealOnScroll
 );
 
 revealOnScroll();
+
+window.addEventListener(
+"scroll",
+() => {
+
+const scrolled =
+window.pageYOffset;
+
+document.querySelectorAll(
+".glass-card"
+).forEach((card,index) => {
+
+const speed =
+(index + 1) * 0.02;
+
+card.style.transform +=
+` translateY(${scrolled * speed * 0.08}px)`;
+
+});
+
+});
