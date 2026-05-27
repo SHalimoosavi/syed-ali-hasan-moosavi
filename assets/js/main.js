@@ -648,3 +648,97 @@ node.style.transform = "";
 );
 
 });
+
+/* =======================================================
+   PHASE 11.6 CINEMATIC SCROLL ENGINE
+======================================================= */
+
+/* =======================================================
+   REVEAL SEQUENCING
+======================================================= */
+
+const cinematicObserver =
+new IntersectionObserver(
+
+entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add(
+"active"
+);
+
+}
+
+});
+
+},
+
+{
+threshold:0.12
+}
+
+);
+
+document.querySelectorAll(
+
+".glass-card,\
+.graph-node,\
+.section-heading,\
+.hero-content,\
+.ecosystem-core"
+
+).forEach(el=>{
+
+el.classList.add(
+"reveal-sequence"
+);
+
+cinematicObserver.observe(el);
+
+});
+
+/* =======================================================
+   PARALLAX ENGINE
+======================================================= */
+
+window.addEventListener(
+"scroll",
+()=>{
+
+const scrollY =
+window.scrollY;
+
+document.querySelectorAll(
+".parallax-back"
+).forEach(layer=>{
+
+layer.style.transform =
+
+`translateY(${scrollY * 0.08}px)`;
+
+});
+
+document.querySelectorAll(
+".parallax-middle"
+).forEach(layer=>{
+
+layer.style.transform =
+
+`translateY(${scrollY * 0.04}px)`;
+
+});
+
+document.querySelectorAll(
+".parallax-front"
+).forEach(layer=>{
+
+layer.style.transform =
+
+`translateY(${scrollY * 0.02}px)`;
+
+});
+
+});
