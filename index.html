@@ -25,6 +25,18 @@ content="index,follow">
 name="theme-color"
 content="#050816">
 
+<meta
+name="apple-mobile-web-app-capable"
+content="yes">
+
+<meta
+name="apple-mobile-web-app-status-bar-style"
+content="black-translucent">
+
+<meta
+name="apple-mobile-web-app-title"
+content="SAHM HQ">
+
 <link
 rel="canonical"
 href="https://shalimoosavi.github.io/syed-ali-hasan-moosavi/">
@@ -1787,6 +1799,44 @@ SAYANJALI NEXUS PRIVATE LIMITED
 </script>
 
 <script src="assets/js/main.js"></script>
+
+<!-- PWA SERVICE WORKER -->
+
+<script>
+
+if("serviceWorker" in navigator){
+
+window.addEventListener(
+"load",
+()=>{
+
+navigator.serviceWorker.register(
+"/syed-ali-hasan-moosavi/service-worker.js"
+)
+
+.then(reg=>{
+
+console.log(
+"PWA active",
+reg
+);
+
+})
+
+.catch(err=>{
+
+console.log(
+"PWA failed",
+err
+);
+
+});
+
+});
+
+}
+
+</script>
 
 </body>
 </html>
